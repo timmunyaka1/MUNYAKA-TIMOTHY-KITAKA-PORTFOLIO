@@ -236,6 +236,16 @@ dialog#compose::backdrop{background:rgba(12,10,9,.55);backdrop-filter:blur(4px)}
 .k.core{background:#fff3c2;color:#3d3300;border-color:#f4dc82}
 .legend .k{font-size:12px;padding:3px 10px}
 
+/* whole project card is a link: the cover sits over the card, the gallery tabs stay clickable above it */
+.proj{position:relative;transition:transform .5s var(--ease),box-shadow .5s}
+.proj .cover{position:absolute;inset:0;z-index:2;border-radius:26px}
+.proj .tabs{position:relative;z-index:3}
+.proj:has(.cover):hover{transform:translateY(-4px);box-shadow:0 40px 80px -40px rgba(8,40,22,.55)}
+.proj .cover:focus-visible{outline:3px solid var(--g2);outline-offset:3px}
+.proj .stack{display:grid;gap:10px}
+.proj .stack .mono{font-size:11px}
+.proj .visit{margin-top:2px}
+
 /* ---------- component fine-tuning for this theme ---------- */
 .mt b{display:table;margin:0 auto;background:linear-gradient(transparent 64%,var(--y) 64%);-webkit-background-clip:border-box;background-clip:border-box;color:#0c1511;padding:0 6px;filter:none}
 .mgrid{box-shadow:0 40px 90px -44px rgba(8,40,22,.45)}
@@ -324,12 +334,13 @@ dialog#compose{border:1px solid var(--line)}
           <img src="previews/mutua-3-join.jpg" alt="Closing call to action: Mbele Iko Sawa and the membership registration link" width="800" height="672" loading="lazy">
         </div>
       </div>
+      <a class="cover" href="https://alfredmutua.site/" target="_blank" rel="noopener" aria-label="Open alfredmutua.site in a new tab"></a>
       <div class="bd">
-        <span class="mono">Project 01 · Live website · Built by me</span>
+        <span class="mono">Project 01</span>
         <h3>Dr. Alfred Nganga Mutua</h3>
-        <dl class="facts"><div><dt>Purpose</dt><dd>A professional home for Dr. Mutua's story and message, with a clear way for supporters to take part, in the languages his audience speaks.</dd></div><div><dt>What I built</dt><dd>A responsive site with a bold purple and road-stripe identity, an English / Swahili switch, a story and legacy section, a media area and a prominent call to action.</dd></div><div><dt>Skills shown</dt><dd>Brand-led front-end design, bilingual UX, responsive layout, clear typography.</dd></div></dl>
-        <div class="tags"><span>Front-end design</span><span>Bilingual EN / SW</span><span>Responsive</span><span>Live site</span></div>
-        <a class="visit" href="https://alfredmutua.site/" target="_blank" rel="noopener">Visit alfredmutua.site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <dl class="facts"><div><dt>What I built</dt><dd>Designed and developed a bilingual personal website for Dr. Alfred Nganga Mutua, presenting his story, legacy and media in English and Swahili, with a distinctive visual identity and a responsive layout.</dd></div></dl>
+        <div class="stack"><span class="mono">Tech stack</span><div class="tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Vercel</span></div></div>
+        <span class="visit">Visit alfredmutua.site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
       </div>
     </article>
 
@@ -350,11 +361,13 @@ dialog#compose{border:1px solid var(--line)}
           <img src="previews/4-admin.jpg" alt="IT admin dashboard with the ticket table" width="800" height="672" loading="lazy">
         </div>
       </div>
+      
       <div class="bd">
-        <span class="mono">Project 02 · Web app</span>
+        <span class="mono">Project 02</span>
         <h3>Matungulu ICT Support Desk</h3>
-        <dl class="facts"><div><dt>Purpose</dt><dd>Give every school in the sub-county one dependable way to report ICT problems and see what happens next.</dd></div><div><dt>What I built</dt><dd>I adapted an open-source Flask template into a full help desk: a level-then-school picker covering all 128 institutions, multi-issue tickets with DLP device and MoE portal lists, a public ticket tracker, an IT-only dashboard with M&amp;E statistics, and a Kenya-government design.</dd></div><div><dt>Engineering</dt><dd>Hashed logins, rate limiting, origin checks, a strict content-security policy, input validation and 19 automated tests.</dd></div></dl>
-        <div class="tags"><span>Python · Flask</span><span>SQLite</span><span>Security hardening</span><span>Testing (19)</span><span>UX</span></div>
+        <dl class="facts"><div><dt>What I built</dt><dd>Adapted an open-source Flask help desk into a ticketing system for the Matungulu Sub-County Education Office. Schools choose their institution from a directory of 128 schools, report one or more ICT issues with device and portal details, and track progress by ticket ID. ICT officers manage tickets from a secured dashboard with status updates and summary statistics. Added security hardening and 19 automated tests.</dd></div></dl>
+        <div class="stack"><span class="mono">Tech stack</span><div class="tags"><span>Python</span><span>Flask</span><span>SQLite</span><span>HTML / CSS / JavaScript</span><span>unittest</span></div></div>
+        
       </div>
     </article>
 
@@ -369,12 +382,13 @@ dialog#compose{border:1px solid var(--line)}
           <img src="previews/scde-2-stats.jpg" alt="Education statistics: 38 secondary, 84 primary, 84 junior and 84 pre-schools, 5 special units, 1 TTI" width="800" height="672" loading="lazy">
         </div>
       </div>
+      <a class="cover" href="https://scdematungulu.com/" target="_blank" rel="noopener" aria-label="Open scdematungulu.com in a new tab"></a>
       <div class="bd">
-        <span class="mono">Project 03 · Live website · Built by me</span>
+        <span class="mono">Project 03</span>
         <h3>SCDE Matungulu Sub-County EMIS</h3>
-        <dl class="facts"><div><dt>Purpose</dt><dd>A public home for the Sub-County Director of Education's schools data and updates.</dd></div><div><dt>What I built</dt><dd>A live schools directory and statistics (38 secondary, 84 primary, 84 junior and 84 pre-schools, 5 special units and 1 TTI), plus events, gallery, staff and enrolment data and an administrator portal.</dd></div><div><dt>Result</dt><dd>About 140 visits a day, giving schools, parents and officers one trusted place to find the numbers.</dd></div></dl>
-        <div class="tags"><span>Data-driven web</span><span>Live data</span><span>Admin portal</span><span>Public sector</span></div>
-        <a class="visit" href="https://scdematungulu.com/" target="_blank" rel="noopener">Visit scdematungulu.com <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <dl class="facts"><div><dt>What I built</dt><dd>Developed the public EMIS website of the Matungulu Sub-County Education Office: a live schools directory and education statistics across secondary, primary, junior, pre-primary, special-unit and TTI institutions, with events, gallery, staff and enrolment data, and an administrator portal.</dd></div></dl>
+        <div class="stack"><span class="mono">Tech stack</span><div class="tags"><span>HTML5</span><span>Tailwind CSS</span><span>JavaScript</span><span>Chart.js</span><span>REST API</span></div></div>
+        <span class="visit">Visit scdematungulu.com <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
       </div>
     </article>
   </div>
