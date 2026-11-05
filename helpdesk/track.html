@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="demo-api.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo: Matungulu Sub-County Education Office · ICT Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400&display=swap" rel="stylesheet">
+<style>
+html,body{background:#f4f6f2;margin:0}
+:root{--ink:#0c1511;--ink2:#46524b;--muted:#7a857e;--line:#e3e8e2;--g:#0b6b3c;--g2:#13a15d;--r:#bb1f2d;--bg:#f4f6f2;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--g2);outline-offset:3px;border-radius:8px}
+em.s{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400}
+.mono{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+
+/* top bar */
+.bar{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;width:min(1120px,calc(100% - 28px));display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 10px 8px 16px;border-radius:999px;color:#fff;
+ background:rgba(8,28,18,.45);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.bar .id{display:flex;align-items:center;gap:12px;min-width:0}
+.bar img{height:34px;width:auto;flex:none}
+.bar b{font-weight:600;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar span.sm{display:block;font-size:11.5px;opacity:.7;font-weight:400}
+.bar nav{display:flex;gap:6px;align-items:center;flex:none}
+.bar nav a{font-size:13.5px;text-decoration:none;padding:9px 14px;border-radius:999px;color:#e9f3ec;transition:.3s var(--ease)}
+.bar nav a:hover{background:rgba(255,255,255,.12)}
+.bar nav a.cta,.bar nav button.cta{background:#fff;color:#0b3d24;font-weight:600;border:0;font:inherit;font-size:13.5px;padding:9px 14px;border-radius:999px;cursor:pointer}
+@media(max-width:640px){.bar b{font-size:13px}.bar span.sm{display:none}.bar nav a:not(.cta){display:none}}
+
+/* hero */
+.hero{position:relative;color:#fff;overflow:hidden;isolation:isolate;padding:150px 20px 190px;background:#07140d}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;
+ background:radial-gradient(900px 520px at 85% 20%,rgba(19,161,93,.45),transparent 60%),radial-gradient(700px 420px at 0% 100%,rgba(187,31,45,.3),transparent 62%),linear-gradient(180deg,#07140d,#0a2417)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 70%)}
+.hero .in{max-width:1120px;margin:0 auto;position:relative}
+.flagbar{display:flex;height:4px;width:96px;border-radius:4px;overflow:hidden;margin-bottom:26px}
+.flagbar i{flex:1}.flagbar i:nth-child(1){background:#000}.flagbar i:nth-child(2){background:var(--r)}.flagbar i:nth-child(3){background:var(--g2)}
+.eyebrow{color:#8be0b3}
+h1{font-weight:500;font-size:clamp(38px,6.6vw,84px);line-height:1.02;letter-spacing:-.04em;margin:16px 0 0;max-width:13ch}
+h1 em.s{color:#8be0b3;letter-spacing:-.02em}
+.lead{max-width:520px;color:#c5d6cb;font-weight:300;font-size:clamp(16px,1.5vw,19px);margin:24px 0 0}
+.coa{position:absolute;right:max(-30px,calc(50% - 600px));top:-30px;height:min(420px,52vw);opacity:.95;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5));animation:float 7s ease-in-out infinite;pointer-events:none}
+@keyframes float{50%{transform:translateY(-12px)}}
+@media(max-width:860px){.coa{opacity:.18;right:-60px;top:20px}}
+.steps{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.steps span{display:inline-flex;gap:10px;align-items:center;font-size:13.5px;padding:9px 16px 9px 10px;border-radius:99px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px)}
+.steps b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--g2);color:#04170d;font-size:12px}
+
+/* main */
+main{max-width:1120px;margin:-110px auto 0;padding:0 20px 60px;position:relative;z-index:2}
+.card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:clamp(22px,3.4vw,40px);box-shadow:0 40px 90px -40px rgba(8,40,22,.35);margin-bottom:20px}
+.card h2{margin:0;font-weight:600;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.03em}
+.card .hint{color:var(--muted);font-size:14.5px;margin:6px 0 0}
+.split{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,4vw,56px)}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+.aside .item{display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--line)}
+.aside .item:first-of-type{margin-top:22px}
+.aside .ic{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#e6f5ec,#c7ebd6);color:var(--g);display:grid;place-items:center;flex:none}
+.aside b{display:block;font-weight:600;font-size:15px}.aside p{margin:2px 0 0;color:var(--ink2);font-size:14px;font-weight:300}
+
+form{display:grid;gap:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.row{grid-template-columns:1fr}}
+label.f{display:grid;gap:7px;font-weight:600;font-size:13.5px}
+input,select,textarea{font:inherit;font-size:15px;font-weight:400;color:var(--ink);padding:13px 14px;border-radius:12px;border:1px solid #d5ddd6;background:#fbfcfb;transition:border-color .25s,box-shadow .25s;width:100%}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--g2);box-shadow:0 0 0 4px rgba(19,161,93,.15)}
+textarea{resize:vertical;min-height:110px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink2);font-weight:400}
+.consent input{width:18px;height:18px;margin-top:2px;accent-color:var(--g)}
+.btn{font:inherit;font-weight:600;font-size:15px;color:#fff;border:0;cursor:pointer;padding:14px 22px;border-radius:12px;background:linear-gradient(180deg,#14a35f,#0b6b3c);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 12px 28px -12px rgba(11,107,60,.9);transition:transform .35s var(--ease),box-shadow .35s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.ok{display:flex;gap:14px;align-items:center;padding:16px 18px;border-radius:16px;background:#ecf8f1;border:1px solid #bfe6d0;animation:rise .7s var(--ease) both}
+.ok code{font-family:ui-monospace,monospace;font-size:17px;font-weight:700;color:var(--g);letter-spacing:.04em}
+.err{padding:12px 16px;border-radius:12px;background:#fdeceb;border:1px solid #f3c2c0;color:#8f1a24;font-size:14px;animation:rise .5s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+
+/* admin */
+.login{max-width:440px;margin:0 auto}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.tile{padding:22px;border-radius:20px;background:linear-gradient(160deg,#f2faf5,#e4f4ea);border:1px solid #cfe9db}
+.tile .n{font-size:clamp(30px,4vw,44px);font-weight:600;letter-spacing:-.04em;color:var(--g);line-height:1.1;margin-top:10px}
+.tile .n.sm{font-size:18px;letter-spacing:-.02em;line-height:1.3}
+.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 16px}
+.toolbar input{flex:1;min-width:200px}.toolbar select{width:auto;min-width:220px}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:16px}
+table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:720px}
+th{background:#f6f8f6;text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:14px 16px;font-weight:600}
+td{padding:14px 16px;border-top:1px solid var(--line)}
+tr:hover td{background:#fafcfa}
+.tid{font-family:ui-monospace,monospace;font-weight:700;color:var(--g)}
+.badge{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:12.5px;padding:5px 12px;border-radius:99px}
+.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.badge.pending{background:#fff4e0;color:#a35a00}
+.badge.in-progress{background:#e6efff;color:#1d4ed8}
+.badge.resolved{background:#e4f6ea;color:#127a43}
+td select{padding:8px 10px;font-size:13.5px;width:auto}
+.detail{display:grid;gap:12px;padding:14px;border-radius:14px;background:#f3f9f5;border:1px solid #d3eadb}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+@media(max-width:600px){.checks{grid-template-columns:1fr}}
+.chk{display:flex;gap:10px;align-items:center;padding:10px 12px;border:1px solid #d5ddd6;border-radius:12px;background:#fff;font-weight:500;font-size:14px;cursor:pointer;transition:.2s}
+.chk:hover{border-color:var(--g2)}
+.chk input{width:18px;height:18px;accent-color:var(--g);flex:none}
+.chk:has(input:checked){background:#e7f5ec;border-color:var(--g2)}
+.trk h3{margin:6px 0 2px;font-size:22px;font-weight:600;letter-spacing:-.02em}
+.trk p{margin:2px 0;color:var(--ink2);font-size:14.5px}
+.stepper{display:grid;grid-template-columns:repeat(3,1fr);gap:0;list-style:none;margin:26px 0 8px;padding:0;position:relative}
+.stepper li{position:relative;text-align:center;font-size:13px;font-weight:600;color:var(--muted);padding-top:38px}
+.stepper li::before{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid #cfd8d1;z-index:2}
+.stepper li::after{content:"";position:absolute;top:15px;left:-50%;width:100%;height:3px;background:#dfe6e0;z-index:1}
+.stepper li:first-child::after{display:none}
+.stepper li.done{color:var(--g)}
+.stepper li.done::before{background:var(--g2);border-color:var(--g2)}
+.stepper li.done::after{background:var(--g2)}
+.stepper li.current::before{box-shadow:0 0 0 6px rgba(19,161,93,.2)}
+.dates{display:flex;gap:24px;flex-wrap:wrap;margin-top:14px;font-size:13px;color:var(--muted)}
+.detail[hidden],.other[hidden],#school-list[hidden]{display:none}
+.levels{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.levels legend{padding:0;margin-bottom:8px;font-weight:600;font-size:13.5px;float:left;width:100%}
+.chip{display:inline-flex;cursor:pointer}
+.chip input{position:absolute;opacity:0;width:1px;height:1px}
+.chip span{padding:10px 18px;border-radius:99px;border:1px solid #d5ddd6;background:#fbfcfb;font-weight:600;font-size:14px;transition:.25s var(--ease)}
+.chip:hover span{border-color:var(--g2)}
+.chip input:checked+span{background:var(--g);border-color:var(--g);color:#fff;box-shadow:0 8px 20px -10px rgba(11,107,60,.9)}
+.chip input:focus-visible+span{outline:2px solid var(--g2);outline-offset:3px}
+#school-input:disabled{background:#f1f4f1;cursor:not-allowed}
+.cb{position:relative}
+#school-list{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 6px);max-height:280px;overflow:auto;margin:0;padding:6px;list-style:none;background:#fff;border:1px solid #cfdcd2;border-radius:14px;box-shadow:0 24px 50px -20px rgba(8,40,22,.4)}
+#school-list li{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 12px;border-radius:9px;cursor:pointer;font-size:14.5px;font-weight:500}
+#school-list li[aria-selected="true"],#school-list li:hover{background:#e7f5ec}
+#school-list li.none{cursor:default;color:var(--muted);font-weight:400}
+.tag{font-size:11px;font-weight:600;letter-spacing:.04em;padding:3px 9px;border-radius:99px;background:#eef2ee;color:var(--ink2);flex:none}
+.sub{display:block;font-size:12.5px;color:var(--muted);font-weight:400}
+.empty{text-align:center;color:var(--muted);padding:34px}
+footer a{text-decoration:underline;text-underline-offset:3px}
+footer{max-width:1120px;margin:0 auto;padding:10px 20px 40px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(26px);filter:blur(6px);animation:in 1s var(--ease) forwards}
+@keyframes in{to{opacity:1;transform:none;filter:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001s!important;animation-delay:0s!important;transition-duration:.001s!important}.coa{animation:none}}
+</style>
+<style>.demobar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px 16px;background:#0c1511;color:#e4efe8;font:600 13px/1.4 Manrope,system-ui,sans-serif;border-top:1px solid rgba(255,255,255,.14)}.demobar b{color:#ffd84d}.demobar a,.demobar button{color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:6px 13px;font:inherit;cursor:pointer;text-decoration:none}.demobar a:hover,.demobar button:hover{background:rgba(255,255,255,.2)}body{padding-bottom:64px}@media(max-width:560px){body{padding-bottom:104px}}</style></head>
+<body>
+
+<header class="bar">
+  <div class="id"><img src="static/kenya-coat-of-arms.png" alt="Government of Kenya coat of arms" data-hide-on-error><div style="min-width:0"><b>Matungulu Sub-County Education Office</b><span class="sm">Republic of Kenya · Ministry of Education</span></div></div>
+  <nav aria-label="Primary">
+    <a class="cta" href="index.html">Report an issue</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <img class="coa" src="static/kenya-coat-of-arms.png" alt="" aria-hidden="true" data-hide-on-error>
+  <div class="in">
+    <div class="flagbar rv" style="animation-delay:.05s"><i></i><i></i><i></i></div>
+    
+    <div class="mono eyebrow rv" style="animation-delay:.1s">Matungulu Sub-County · ICT Support</div>
+    <h1 class="rv" style="animation-delay:.18s">Where is my <em class="s">ticket?</em></h1>
+    <p class="lead rv" style="animation-delay:.3s">Enter the tracking ID you were given when you reported the issue to see its current status.</p>
+    
+  </div>
+</section>
+
+<main>
+
+  <section class="card rv" id="track" style="animation-delay:.5s;max-width:760px;margin-inline:auto">
+    <h2>Track a ticket</h2>
+    <p class="hint">Your tracking ID looks like TKT-1A2B3C4D.</p>
+    <form id="track-form" style="grid-template-columns:1fr auto;align-items:end;margin-top:20px" novalidate>
+      <label class="f">Tracking ID<input id="track-id" maxlength="12" placeholder="TKT-XXXXXXXX" autocomplete="off" spellcheck="false" style="text-transform:uppercase" aria-label="Tracking ID"></label>
+      <button class="btn" type="submit">Track</button>
+    </form>
+    <div id="track-result" style="margin-top:24px" aria-live="polite"></div>
+    <p class="hint" style="margin-top:22px">Lost your ID? Contact the office on <a href="tel:+254722626796">+254 722 626 796</a>.</p>
+  </section>
+
+</main>
+
+<footer><span>© 2026 SCDE – Matungulu Sub-County · Ministry of Education, Republic of Kenya</span><span>P.O. Box 449, Tala · <a href="tel:+254722626796">+254 722 626 796</a> · <a href="mailto:info@subcountyemis.go.ke">info@subcountyemis.go.ke</a></span></footer>
+
+<script>
+document.querySelectorAll('img[data-hide-on-error]').forEach((img) => {
+  const hide = () => { img.style.display = 'none'; };
+  img.addEventListener('error', hide);
+  if (img.complete && img.naturalWidth === 0) hide();
+});
+const SCHOOLS = [];
+const state = { tickets: [] };
+const $ = (id) => document.getElementById(id);
+const esc = (v) => String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const form = $('ticket-form'), loginForm = $('login-form'), tableBody = $('ticket-table');
+const analyticsSummary = $('analytics-summary'), schoolFilter = $('filter-school'), categoryFilter = $('filter-category');
+const formMessage = $('form-message'), accessMessage = $('access-message');
+const dashboardSection = $('dashboard-section'), loginCard = $('login-card'), analyticsCard = $('analytics-card');
+
+function fmt(iso) {
+  const d = new Date(iso);
+  return isNaN(d) ? '' : d.toLocaleString('en-KE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+}
+function unlock() {
+  loginCard.style.display = 'none';
+  dashboardSection.style.display = 'block';
+  analyticsCard.style.display = 'block';
+}
+function countUp(el, target, suffix, decimals) {
+  const start = performance.now(), dur = 1100;
+  (function step(t) {
+    const p = Math.min((t - start) / dur, 1), e = 1 - Math.pow(1 - p, 4);
+    el.textContent = (target * e).toFixed(decimals) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  })(start);
+}
+async function loadTickets() {
+  const res = await fetch('/api/tickets');
+  if (!res.ok) return false;
+  state.tickets = await res.json();
+  render();
+  return true;
+}
+async function loadAnalytics() {
+  const res = await fetch('/api/analytics');
+  if (!res.ok) return;
+  const d = await res.json();
+  analyticsSummary.innerHTML =
+    '<div class="tile"><span class="mono" style="color:var(--muted)">Tickets received</span><div class="n" data-n="' + d.total_tickets + '" data-s="" data-d="0">0</div></div>' +
+    '<div class="tile"><span class="mono" style="color:var(--muted)">Resolved</span><div class="n" data-n="' + d.resolved_tickets + '" data-s="" data-d="0">0</div></div>' +
+    '<div class="tile"><span class="mono" style="color:var(--muted)">Resolution rate</span><div class="n" data-n="' + d.resolution_rate + '" data-s="%" data-d="1">0</div></div>' +
+    '<div class="tile"><span class="mono" style="color:var(--muted)">Highest volume</span><div class="n sm">' + esc(d.risk_indicator) + '</div></div>';
+  analyticsSummary.querySelectorAll('[data-n]').forEach((el) => countUp(el, parseFloat(el.dataset.n), el.dataset.s, +el.dataset.d));
+}
+function render() {
+  const q = schoolFilter.value.toLowerCase(), c = categoryFilter.value;
+  const rows = state.tickets.filter((t) => t.school_name.toLowerCase().includes(q) && (!c || t.issue_category.split(', ').includes(c)));
+  if (!rows.length) { tableBody.innerHTML = '<tr><td class="empty" colspan="6">No tickets match.</td></tr>'; return; }
+  tableBody.innerHTML = rows.map((t) => {
+    const cls = t.status.toLowerCase().split(' ').join('-');
+    const opt = (s) => '<option value="' + s + '"' + (t.status === s ? ' selected' : '') + '>' + s + '</option>';
+    return '<tr><td class="tid">' + esc(t.tracking_id) + '</td><td>' + esc(t.school_name) + '</td><td>' + esc(t.issue_category) + (t.detail ? '<span class="sub">' + esc(t.detail) + '</span>' : '') +
+      '</td><td><span class="badge ' + cls + '">' + esc(t.status) + '</span></td><td>' + fmt(t.updated_at) +
+      '</td><td><select data-id="' + t.id + '" class="status-select" aria-label="Change status">' + opt('Pending') + opt('In Progress') + opt('Resolved') + '</select></td></tr>';
+  }).join('');
+}
+
+if (form) {
+  const dDev = $('detail-devices'), dAcc = $('detail-accounts');
+  const devOth = $('device-other'), devWrap = $('device-other-wrap'), devBox = $('dev-other-box');
+  const porOth = $('portal-other'), porWrap = $('portal-other-wrap'), porBox = $('por-other-box');
+  const detailValue = $('detail-value');
+  const sel = (n) => Array.from(document.querySelectorAll('input[name="' + n + '"]:checked')).map((i) => i.value);
+  function syncDetail() {
+    const cats = sel('cat');
+    dDev.hidden = !cats.includes('Devices');
+    dAcc.hidden = !cats.includes('Accounts & Platforms');
+    devWrap.hidden = !devBox.checked;
+    porWrap.hidden = !porBox.checked;
+    const parts = [];
+    if (cats.includes('Devices')) {
+      const d = sel('dev'); if (devBox.checked && devOth.value.trim()) d.push('Other: ' + devOth.value.trim());
+      if (d.length) parts.push('Devices: ' + d.join(', '));
+    }
+    if (cats.includes('Accounts & Platforms')) {
+      const p = sel('por'); if (porBox.checked && porOth.value.trim()) p.push('Other: ' + porOth.value.trim());
+      if (p.length) parts.push('Portals: ' + p.join(', '));
+    }
+    detailValue.value = parts.join(' | ');
+  }
+  form.addEventListener('change', syncDetail);
+  form.addEventListener('input', syncDetail);
+  syncDetail();
+
+  const cbInput = $('school-input'), cbList = $('school-list'), cbValue = $('school-value');
+  let items = [], active = -1, level = '';
+  const labelOf = (s) => s.n + ' (' + s.l + ')';
+  function closeList() { cbList.hidden = true; cbInput.setAttribute('aria-expanded', 'false'); active = -1; }
+  function paint() {
+    Array.from(cbList.children).forEach((li, i) => li.setAttribute('aria-selected', i === active ? 'true' : 'false'));
+    const el = cbList.children[active]; if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest' });
+  }
+  function openList() {
+    const q = cbInput.value.trim().toLowerCase();
+    items = SCHOOLS.filter((s) => s.l === level && (!q || s.n.toLowerCase().includes(q)));
+    cbList.innerHTML = items.length
+      ? items.map((s, i) => '<li role="option" data-i="' + i + '">' + esc(s.n) + '</li>').join('')
+      : '<li class="none">No school matches. Check the spelling.</li>';
+    cbList.hidden = false; cbInput.setAttribute('aria-expanded', 'true'); active = -1;
+  }
+  function choose(i) { const s = items[i]; if (!s) return; cbInput.value = labelOf(s); cbValue.value = labelOf(s); closeList(); }
+  document.querySelectorAll('input[name="level"]').forEach((r) => r.addEventListener('change', () => {
+    level = r.value;
+    cbValue.value = ''; cbInput.value = '';
+    cbInput.disabled = false;
+    cbInput.placeholder = 'Search ' + level + ' schools';
+    openList(); cbInput.focus();
+  }));
+  cbInput.addEventListener('input', () => { cbValue.value = ''; openList(); });
+  cbInput.addEventListener('focus', openList);
+  cbInput.addEventListener('keydown', (e) => {
+    if (cbList.hidden && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) openList();
+    if (e.key === 'ArrowDown') { e.preventDefault(); active = Math.min(active + 1, items.length - 1); paint(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); active = Math.max(active - 1, 0); paint(); }
+    else if (e.key === 'Enter' && !cbList.hidden) { e.preventDefault(); choose(active >= 0 ? active : (items.length === 1 ? 0 : -1)); }
+    else if (e.key === 'Escape') closeList();
+  });
+  cbList.addEventListener('mousedown', (e) => { const li = e.target.closest('li[data-i]'); if (li) { e.preventDefault(); choose(+li.dataset.i); } });
+  document.addEventListener('click', (e) => { if (!e.target.closest('.cb')) closeList(); });
+  cbInput.addEventListener('blur', () => { setTimeout(closeList, 120); });
+}
+
+if (form) form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (!$('school-value').value) { formMessage.innerHTML = '<div class="err">Tick your school level, then search for your school and choose it from the list.</div>'; $('school-input').focus(); return; }
+  const cats = Array.from(document.querySelectorAll('input[name="cat"]:checked')).map((i) => i.value);
+  if (!cats.length) { formMessage.innerHTML = '<div class="err">Tick at least one issue.</div>'; return; }
+  const fd = new FormData(form);
+  const payload = { school_name: fd.get('school_name'), requestor_designation: fd.get('requestor_designation'), description: fd.get('description'), consent: fd.get('consent'), detail: $('detail-value').value, issue_categories: cats };
+  const res = await fetch('/api/tickets', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+  const data = await res.json();
+  if (!res.ok) {
+    formMessage.innerHTML = '<div class="err">' + esc(data.error || 'Something went wrong.') + '</div>';
+    return;
+  }
+  formMessage.innerHTML = '<div class="ok"><div><div class="mono" style="color:var(--g)">Ticket received</div><code>' + esc(data.tracking_id) + '</code><div style="font-size:13.5px;color:var(--ink2);margin-top:2px">Keep this number to follow up with the ICT team.</div><a href="track.html?id=' + encodeURIComponent(data.tracking_id) + '" style="display:inline-block;margin-top:8px;font-weight:600;color:var(--g)">Track this ticket →</a></div></div>';
+  form.reset();
+  $('school-value').value = ''; $('school-input').value = ''; $('school-input').disabled = true; $('school-input').placeholder = 'Tick a school level first';
+  document.querySelectorAll('input[name="level"], input[name="cat"], input[name="dev"], input[name="por"], #dev-other-box, #por-other-box').forEach((r) => { r.checked = false; });
+  form.dispatchEvent(new Event('change'));
+});
+
+const trackForm = $('track-form');
+if (trackForm) {
+  const out = $('track-result'), input = $('track-id');
+  const LABELS = ['Received', 'In progress', 'Resolved'], STATES = ['Pending', 'In Progress', 'Resolved'];
+  async function lookup(id) {
+    out.innerHTML = '<p class="hint">Looking up…</p>';
+    const res = await fetch('/api/track?id=' + encodeURIComponent(id));
+    const t = await res.json();
+    if (!res.ok) { out.innerHTML = '<div class="err">' + esc(t.error || 'Something went wrong.') + '</div>'; return; }
+    const at = Math.max(STATES.indexOf(t.status), 0);
+    out.innerHTML = '<div class="trk"><div class="mono" style="color:var(--g)">' + esc(t.tracking_id) + '</div>' +
+      '<h3>' + esc(t.school_name) + '</h3><p>' + esc(t.issue_category) + '</p>' + (t.detail ? '<p style="color:var(--muted)">' + esc(t.detail) + '</p>' : '') +
+      '<ol class="stepper">' + LABELS.map((l, i) => '<li class="' + (i <= at ? 'done' : '') + (i === at ? ' current' : '') + '">' + l + '</li>').join('') + '</ol>' +
+      '<div class="dates"><span>Submitted: ' + fmt(t.created_at) + '</span><span>Last update: ' + fmt(t.updated_at) + '</span></div></div>';
+  }
+  trackForm.addEventListener('submit', (e) => { e.preventDefault(); lookup(input.value); });
+  const pre = new URLSearchParams(location.search).get('id');
+  if (pre) { input.value = pre.toUpperCase(); lookup(pre); }
+}
+
+if (loginForm) loginForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const res = await fetch('/login', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(loginForm)) });
+  if (res.ok) { unlock(); await loadTickets(); await loadAnalytics(); }
+  else { accessMessage.innerHTML = '<div class="err">Invalid IT Department credentials.</div>'; }
+});
+
+if (tableBody) tableBody.addEventListener('change', async (event) => {
+  if (!event.target.classList.contains('status-select')) return;
+  await fetch('/api/tickets/' + event.target.dataset.id + '/status', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ status: event.target.value }) });
+  await loadTickets(); await loadAnalytics();
+});
+
+if (schoolFilter) {
+  schoolFilter.addEventListener('input', render);
+  categoryFilter.addEventListener('change', render);
+  loadTickets().then((ok) => { if (ok) { unlock(); loadAnalytics(); } });
+}
+</script>
+<div class="demobar" role="note"><span><b>Interactive demo</b> of the Matungulu ICT Support Desk. Runs in your browser with sample data. Admin login: <b>demo</b> / <b>demo</b></span><button type="button" onclick="ICTDemo.reset()">Reset demo data</button><a href="../index.html#work">&larr; Back to portfolio</a></div></body>
+</html>
