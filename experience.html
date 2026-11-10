@@ -429,8 +429,9 @@ dialog#compose{border:1px solid var(--line)}
       var su=encodeURIComponent(SUBJECT),t=encodeURIComponent(mail());
       var phone=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||(window.matchMedia&&matchMedia('(pointer:coarse)').matches&&innerWidth<820);
       if(phone){location.href='mailto:'+mail()+'?subject='+su;return}
-      var w=window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+t+'&su='+su,'_blank','noopener');
-      if(!w){location.href='mailto:'+mail()+'?subject='+su}   // pop-up blocked: fall back to the mail app
+      // A real link click (not window.open, which returns null with noopener) opens Gmail's compose window in a new tab.
+      var g=document.createElement('a');g.href='https://mail.google.com/mail/?view=cm&fs=1&to='+t+'&su='+su;g.target='_blank';g.rel='noopener noreferrer';
+      g.style.display='none';document.body.appendChild(g);g.click();document.body.removeChild(g);
     }
     window.TIM.compose=openDraft;
     document.querySelectorAll('[data-compose]').forEach(function(a){a.addEventListener('click',openDraft)});
