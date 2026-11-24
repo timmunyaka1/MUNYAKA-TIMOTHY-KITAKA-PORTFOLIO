@@ -251,6 +251,7 @@ dialog#compose::backdrop{background:rgba(12,10,9,.55);backdrop-filter:blur(4px)}
 .proj .stack{display:grid;gap:10px}
 .proj .stack .mono{font-size:11px}
 .proj .visit{margin-top:2px}
+.gal:has(.vid){justify-content:center}.proj .frame.vid{aspect-ratio:16/9}.proj .frame.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;z-index:3}
 
 /* ---------- component fine-tuning for this theme ---------- */
 .mt b{display:table;margin:0 auto;background:linear-gradient(transparent 64%,var(--y) 64%);-webkit-background-clip:border-box;background-clip:border-box;color:#0c1511;padding:0 6px;filter:none}
@@ -319,7 +320,7 @@ dialog#compose{border:1px solid var(--line)}
     <div class="mt"><b data-n="498" data-s="">0</b><span>Tickets resolved</span></div>
     <div class="mt"><b data-n="140" data-s="">0</b><span>Visits per day<small>SCDE Matungulu website</small></span></div>
     <div class="mt"><b data-n="128" data-s="">0</b><span>Institutions in my ticketing system</span></div>
-    <div class="mt"><b data-n="3" data-s="">0</b><span>Live projects</span></div>
+    <div class="mt"><b data-n="4" data-s="">0</b><span>Live projects</span></div>
     <div class="mt"><b data-n="19" data-s="">0</b><span>Automated tests</span></div>
   </div>
 
@@ -328,6 +329,22 @@ dialog#compose{border:1px solid var(--line)}
 <section class="s alt" id="work"><div class="wrap">
   <div class="sec-h rv"><span class="mono">Projects</span><h2>Systems people <em class="s">actually use</em></h2></div>
   <div class="projects">
+    <article class="proj rv">
+      <div class="gal">
+        <div class="frame vid">
+          <video controls preload="none" playsinline poster="previews/proctora-poster.jpg" aria-label="60-second demo of Proctora: a student sitting an exam, a lecturer deciding and HR shortlisting"><source src="previews/proctora-demo.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+      <a class="cover" href="https://proctora.solutions/" target="_blank" rel="noopener" aria-label="Open proctora.solutions in a new tab"></a>
+      <div class="bd">
+        <span class="mono">Project 01</span>
+        <h3>Proctora</h3>
+        <dl class="facts"><div><dt>What I built</dt><dd>Secure online exams for schools, colleges and HR teams. A locked Windows exam app keeps the computer on the exam, AI that runs on the student's own PC watches for phones, other people, voices and looking away, and every attempt is flagged with photo and audio evidence for a person to decide. Lecturers set and mark exams, HR invites candidates and gets a ranked shortlist, and students get verifiable certificates. Watch the 60-second demo.</dd></div></dl>
+        <div class="stack"><span class="mono">Tech stack</span><div class="tags"><span>Python</span><span>Django</span><span>PostgreSQL</span><span>C# / WebView2</span><span>Redis</span><span>Docker</span><span>On-device AI</span></div></div>
+        <span class="visit">Visit proctora.solutions <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      </div>
+    </article>
+
     <article class="proj rv" data-gallery>
       <div class="gal">
         <div class="tabs" role="tablist" aria-label="Screens of the Alfred Mutua website">
@@ -343,7 +360,7 @@ dialog#compose{border:1px solid var(--line)}
       </div>
       <a class="cover" href="https://alfredmutua.site/" target="_blank" rel="noopener" aria-label="Open alfredmutua.site in a new tab"></a>
       <div class="bd">
-        <span class="mono">Project 01</span>
+        <span class="mono">Project 02</span>
         <h3>Dr. Alfred Nganga Mutua</h3>
         <dl class="facts"><div><dt>What I built</dt><dd>Designed and developed a bilingual personal website for Dr. Alfred Nganga Mutua, presenting his story, legacy and media in English and Swahili, with a distinctive visual identity and a responsive layout.</dd></div></dl>
         <div class="stack"><span class="mono">Tech stack</span><div class="tags"><span>Python</span><span>Django</span><span>Wagtail CMS</span><span>PostgreSQL</span><span>JavaScript</span><span>Vercel</span></div></div>
@@ -371,7 +388,7 @@ dialog#compose{border:1px solid var(--line)}
       
       <a class="cover" href="helpdesk/index.html" target="_blank" rel="noopener" aria-label="Open the interactive ICT Support Desk demo in a new tab"></a>
       <div class="bd">
-        <span class="mono">Project 02</span>
+        <span class="mono">Project 03</span>
         <h3>Matungulu ICT Support Desk</h3>
         <dl class="facts"><div><dt>What I built</dt><dd>Adapted an open-source Flask help desk into a ticketing system for the Matungulu Sub-County Education Office. Schools choose their institution from a directory of 128 schools, report one or more ICT issues with device and portal details, and track progress by ticket ID. ICT officers manage tickets from a secured dashboard with status updates and summary statistics. Added security hardening and 19 automated tests.</dd></div></dl>
         <div class="stack"><span class="mono">Tech stack</span><div class="tags"><span>Python</span><span>Flask</span><span>SQLite</span><span>HTML / CSS / JavaScript</span><span>unittest</span></div></div>
@@ -392,7 +409,7 @@ dialog#compose{border:1px solid var(--line)}
       </div>
       <a class="cover" href="https://scdematungulu.com/" target="_blank" rel="noopener" aria-label="Open scdematungulu.com in a new tab"></a>
       <div class="bd">
-        <span class="mono">Project 03</span>
+        <span class="mono">Project 04</span>
         <h3>SCDE Matungulu Sub-County EMIS</h3>
         <dl class="facts"><div><dt>What I built</dt><dd>Developed the public EMIS website of the Matungulu Sub-County Education Office: a live schools directory and education statistics across secondary, primary, junior, pre-primary, special-unit and TTI institutions, with events, gallery, staff and enrolment data, and an administrator portal.</dd></div></dl>
         <div class="stack"><span class="mono">Tech stack</span><div class="tags"><span>HTML5</span><span>Tailwind CSS</span><span>JavaScript</span><span>Chart.js</span><span>REST API</span></div></div>
@@ -540,7 +557,8 @@ dialog#compose{border:1px solid var(--line)}
   {t:'Best project',k:['best project','best work','portfolio','projects','favorite','favourite','proud','ticket','ticketing','support desk','helpdesk','help desk','complaint'],a:"The Matungulu ICT Support Desk. Schools pick their level and school from the official list, tick every issue they have, get a tracking ID and follow the status online. IT staff get a secure dashboard. It has rate limiting, hashed logins and 19 automated tests. I adapted it from an open-source Flask template."},
   {t:'SCDE website',k:['scde','emis','sub-county website','scdematungulu','schools directory','statistics'],a:"I built the SCDE Matungulu Sub-County EMIS site (scdematungulu.com): the office's public website with a live schools directory and education statistics: 36 secondary, 84 primary, 84 junior and 84 pre-schools, 5 special units and 1 TTI."},
   {t:'Alfred Mutua website',k:['alfred','mutua website','alfredmutua','personal website','bilingual','swahili'],a:"I built alfredmutua.site, a personal website for Dr. Alfred Nganga Mutua with a bold purple road-stripe design, an English and Swahili switch, his story and a media section. It runs on Python with Django and the Wagtail CMS, PostgreSQL for the database, and is hosted on Vercel."},
-  {t:'Numbers',k:['numbers','metrics','resolved','visits','traffic','how many','impact','results'],a:"A few numbers: 498 tickets resolved, about 140 visits per day on the SCDE website, 128 schools and institutions covered, 3 live projects and 19 automated tests."},
+  {t:'Proctora',k:['proctora','proctoring','exam','exams','cheat','cheating','online exam','video demo','demo'],a:"Proctora is a secure online exam platform for schools, colleges and HR teams. A locked Windows app keeps the computer on the exam, AI running on the student's own PC flags phones, extra people, voices and looking away with photo and audio evidence, and a person always decides. It runs on Python and Django with PostgreSQL, a C# and WebView2 Windows app, Redis and Docker. There is a 60-second demo video on this page and the site is proctora.solutions."},
+  {t:'Numbers',k:['numbers','metrics','resolved','visits','traffic','how many','impact','results'],a:"A few numbers: 498 tickets resolved, about 140 visits per day on the SCDE website, 128 schools and institutions covered, 4 live projects and 19 automated tests."},
   {t:'Tech stack',k:['stack','tech','technology','tools','language','framework','python','flask','sqlite','javascript','code'],a:"For the ticketing project: Python and Flask, SQLite, and plain HTML, CSS and JavaScript, with automated tests in unittest. I care about security basics too: hashed logins, rate limits, input validation and security headers."},
   {t:'Security and quality',k:['secure','security','quality','tested','testing','reliable','safe'],a:"Quality matters to me. The ticketing system has 19 automated tests, hashed logins, login and ticket rate limits, strict input checks and browser security headers."},
   {t:'Background',k:['experience','background','who are you','about you','about timothy','intern','internship','dlp','digital literacy','career','work history','roles'],a:"I'm a systems administrator and network administrator. I'm currently ICT Support on the Ministry of Education's Digital Literacy Programme (DLP) at Matungulu Sub-County Education Office, supporting 84 primary and 36 senior schools. Before that I was ICT Support / Digital Strategist at Benmbai Construction Ltd (Sep 2024 to Oct 2025) and did an ICT attachment at Kangundo Level 4 Hospital (Feb to Jul 2024)."},
